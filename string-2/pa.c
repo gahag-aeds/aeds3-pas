@@ -7,18 +7,34 @@ int main() {
   unsigned short size;
   
   for (ever) {
+    unsigned short i;
+    char str[100] = "                                                                                                   ";
+    
     scanf("%hu", &size);
     
     if (feof(stdin))
       return 0;
     
-    for (unsigned short i = size - 2; i > 0; i--) {
-      for (unsigned short j = i / 2; j > 0; j--)
-        putchar(' ');
-      puts("*");
+    const unsigned short pivot = (size - 1) / 2;
+    
+    str[pivot] = '*';
+    str[pivot + 1] = '\0';
+    puts(str);
+    
+    for (i = 1; i <= pivot; i++) {
+      str[pivot - i] =
+      str[pivot + i] = '*';
+      str[pivot + i + 1] = '\0';
+      
+      puts(str);
     }
     
-    puts(" *");
-    puts("***");
+    for (i = 0; i < pivot; i++)
+        putchar(' ');
+    puts("*");
+    
+    for (i = 1; i < pivot; i++)
+        putchar(' ');
+    puts("***\n");
   }
 }
